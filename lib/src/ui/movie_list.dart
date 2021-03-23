@@ -43,9 +43,20 @@ class _MovieListState extends State<MovieList> {
         ),
         itemBuilder: (BuildContext context, int index){
           return GridTile(
-              child: Text('${snapshot.data.results[index].title}'),
+              child: InkResponse(
+                enableFeedback: true,
+                child: Image.network(
+                  'https://image.tmdb.org/t/p/w185${snapshot.data.results[index].posterPath}',
+                  fit: BoxFit.cover,
+                ),
+              onTap: () => openMovieDetail(snapshot.data, index),
+              )
           );
         }
     );
+  }
+
+  openMovieDetail(MovieItem data, int index) {
+
   }
 }

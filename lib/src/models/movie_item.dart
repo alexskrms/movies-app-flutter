@@ -136,7 +136,7 @@ class Results {
     _popularity = json['popularity'];
     _voteCount = json['vote_count'];
     _video = json['video'];
-    _voteAverage = json['vote_average'];
+    _voteAverage = json['vote_average'].toDouble();
   }
 
   Map<String, dynamic> toJson() {
