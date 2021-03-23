@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app_flutter/src/models/movie_item.dart';
 import 'package:movies_app_flutter/src/resources/movie_api_provider.dart';
+import 'package:movies_app_flutter/src/ui/movie_detail.dart';
 
 class MovieList extends StatefulWidget {
   @override
@@ -57,6 +58,16 @@ class _MovieListState extends State<MovieList> {
   }
 
   openMovieDetail(MovieItem data, int index) {
-
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return MovieDetail(
+          title: data.results[index].title,
+          posterUrl: data.results[index].backdropPath,
+          description: data.results[index].overview,
+          releaseDate: data.results[index].releaseDate,
+          voteAverage: data.results[index].voteAverage.toString(),
+          movieId: data.results[index].id
+      );
+    })
+    );
   }
 }
